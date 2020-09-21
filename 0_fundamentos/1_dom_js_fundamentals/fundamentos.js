@@ -77,7 +77,7 @@ window.onload = function(){
 
         /*
         for(elemento of cuadrados){
-            elemento.onclick = function(evento){
+            elemento.onclick = function(evento){                       //The target event property returns the element that triggered the event.(w3schools)
                 evento.target.style.backgroundColor = 'red'
             }
         }
