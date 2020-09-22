@@ -3,14 +3,14 @@ window.onload = function(){
     //
     document.querySelector('#btn-modificar-directo').onclick = function(){
         
-        document.querySelector('#segundo-item').style.visibility = 'hidden'
-        document.querySelector('#tercer-item').style.display = 'none'
-    
+        document.querySelector('#segundo-item').style.visibility = 'hidden'   //No se recomienda "tocar" el css directamente, sino que es convieniente hacerlo usando clases
+        document.querySelector('#tercer-item').style.display = 'none'         
+    //Con "hidden" es como si "desapareciera" el elemento, quedando un espacio vació. Mientras que con "display:none" el elemento es removido del flujo de los elementos.
     }
 
     //
     document.querySelector('#btn-modificar-con-clases').onclick = function(){
-        document.querySelector('#cuarto-item').classList.add('desaparecer')
+        document.querySelector('#cuarto-item').classList.add('desaparecer') //Con classList podemos acceder a todas las clases que afectan a dicho elemento. Con classList.add le añadimos una clase al elemento. Con classList.remove puedo retirar una clase.
         document.querySelector('#quinto-item').classList.add('sacar')
     }
 
@@ -20,7 +20,7 @@ window.onload = function(){
         let sexto_item = document.querySelector('#sexto-item')
         
         //Primer método
-        if(sexto_item.classList.contains('desaparecer')){
+        if(sexto_item.classList.contains('desaparecer')){   //".contains" comprueba si la clase indicada existe en el atributo de clase del elemento. Devuelve "true" o "false" dependiendo si la clase se encuentra o no.
             sexto_item.classList.remove('desaparecer')
         }
         else{
@@ -29,7 +29,7 @@ window.onload = function(){
 
         //Segundo método
         let septimo_item = document.querySelector('#septimo-item')
-        septimo_item.classList.toggle('desaparecer')
+        septimo_item.classList.toggle('desaparecer') //.toggle between adding and removing a class name from an element with JavaScript.w3schhols
     
     }
 
@@ -43,7 +43,7 @@ window.onload = function(){
         noveno_item.classList.add('transition-on')
         noveno_item.classList.toggle('azul')
 
-        let decimo_item = document.querySelector('#decimo-item')
+        let decimo_item = document.querySelector('#decimo-item', "parrafoItem")
         decimo_item.classList.add('transition-on')
         decimo_item.classList.toggle('acordeon')
     }

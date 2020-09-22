@@ -2,12 +2,12 @@ window.onload = function(){
 
     let botones = document.querySelectorAll(".btn-turno");
 
-    for (boton of botones){
+    for (boton of botones){ //Con el for..of recorremos cada boton del elemento botones.
 
         boton.onclick = function(evento) {
 
-            let tipo_accion = evento.target.getAttribute("data-tipo-modal");
-            prepararModal(tipo_accion);
+            let tipo_accion = evento.target.getAttribute("data-tipo-modal"); //Los atributos data-*  permiten almacenar información adicional sobre un elemento HTML cualquiera 
+            prepararModal(tipo_accion);      //getAttribute() devuelve el valor del atributo especificado en el elemento
             mostrarModal();
             activarFuncionesModal();
         }
@@ -56,7 +56,7 @@ window.onload = function(){
         let boton_enviar = document.querySelector("#boton-enviar");
         boton_enviar.onclick = function(evento){
 
-            evento.preventDefault();
+            evento.preventDefault(); //Con preventDefault se "previene" el comportamiento habitual del botón
             document.querySelector("#fondo-modal").classList.remove("show")
             document.querySelector("#marco").classList.remove("show")
 
