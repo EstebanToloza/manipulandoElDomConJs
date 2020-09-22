@@ -5,7 +5,7 @@ window.onload = function(){
         let listas = protagonista.querySelectorAll('li')
 
         for (elemento of listas){
-            listas.classList.add('marcados')
+            elemento.classList.add('marcados')
         }
     }
 
