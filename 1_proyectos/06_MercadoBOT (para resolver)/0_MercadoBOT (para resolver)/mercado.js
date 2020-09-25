@@ -1,4 +1,4 @@
-let mi_billetera = 10000;
+let mi_billetera = 15000;
 let mis_compras = 0;
 let billetera;
 let compras;
@@ -18,23 +18,75 @@ function setUp(){
     compras = document.querySelector("#mis_compras");
     compras.innerHTML = mis_compras;
 
+    asignarComportamientoBotones()
+
 }
 
 function asignarComportamientoBotones(){
 
-    let botones = document.querySelectorAll(".caja-botones");
-
+    let cajas = document.querySelectorAll('.caja-botones')
     for(caja of cajas){
-        let botones = caja.querySelectorAll("div");
+        let botones = caja.querySelectorAll('div')
         for(boton of botones){
             boton.onclick = function(event){
-                if(event.target.innerHTML == "+"){
-                    alert("Comprar?");
-                }
+                let elemento_lista = event.target.parentElement.parentElement
+                if(event.target.innerHTML == '+'){
+                    comprarProducto(elemento_lista)
+                    }
                 else{
-                    alert("Querés vender?");
+                    venderProducto(elemento_lista)
                 }
             }
         }
     }
 }
+
+function comprarProducto(elemento_lista){
+
+    let precio = parseInt(elemento_lista.children[3].innerHTML)
+    let cantidad = parseInt(elemento_lista.children[2].innerHTML)
+
+
+    if(precio <= mi_billetera){
+
+        mi_billetera = mi_billetera - precio
+        cantidad = cantidad + 1
+        mis_compras = mis_compras + precio
+
+        actualizarPantalla(elemento_lista, cantidad)
+
+    }else{
+        alert("No tenés plata suficiente!")
+    }
+}
+
+function venderProducto(elemento_lista){
+
+    let precio = parseInt(elemento_lista.children[3].innerHTML)
+    let cantidad = parseInt(elemento_lista.children[2].innerHTML)
+
+
+    if(cantidad > 0){
+
+        mi_billetera = mi_billetera + precio
+        cantidad = cantidad - 1
+        mis_compras = mis_compras - precio
+
+        actualizarPantalla(elemento_lista, cantidad)
+
+    }else{
+        alert("No tiene éste producto")
+    }
+}
+
+function actualizarPantalla(elemento_lista, cantidad){
+
+    //Actualizo la lista actual 
+    elemento_lista.children[2].innerHTML = cantidad
+
+    //Actualizo la billetera y compras
+    billetera.innerHTML = mi_billetera
+    compras.innerHTML = mis_compras
+
+}
+
