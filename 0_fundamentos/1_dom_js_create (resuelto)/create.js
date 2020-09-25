@@ -53,29 +53,41 @@ window.onload = function(){
     //4) Creación y posicionamiento específico de un nuevo elemento en el DOM
     document.querySelector('#btn-crear-insertar').onclick = function(){
         
-        //TO DO
+        let tbody = document.querySelector('tbody')
+        let q_filas = tbody.childElementCount
+
+        let fila_modelo = tbody.querySelector('tr')
+        let nueva_fila = fila_modelo.cloneNode(true)
+
+        nueva_fila.children[0].innerHTML = q_filas + 1
+
+        tbody.insertBefore(nueva_fila, tbody.children[3])
 
     }
 
     //5) Eliminando un elemento del DOM
     document.querySelector('#btn-eliminar').onclick = function(){
         
-        //TO DO
+        let tbody = document.querySelector('tbody')
 
+        tbody.children[2].remove()
+
+        tbody.firstChild.remove()
+        tbody.lastChild.remove()
     }
 
     //6) Limpienado la tabla y creando un "elemento modelo"
     document.querySelector('#btn-limpiar-tabla').onclick = function(){
 
-        //TO DO
+        limpiarTabla()
 
     }
 
     //7) Creación elementos desde datos en un array
     document.querySelector('#btn-creando-desde-array').onclick = function(){
 
-        // TO DO
-        
+        limpiarTabla()
+                
     }
 
     //8) Creación elementos desde datos en objetos
@@ -92,5 +104,18 @@ window.onload = function(){
         
     }    
 
+    /***************************FUNCIONES AUXILIARES**************************/
+
+    function limpiarTabla(){
+        let tbody = document.querySelector('tbody')
+
+        let fila_modelo = tbody.querySelector('tr')
+        let nueva_fila = fila_modelo.cloneNode(true)
+
+        tbody.innerHTML = ''
+
+        tbody.appendChild(nueva_fila)
+        nueva_fila.classList.add('fila-modelo')
+    }
 }
 
